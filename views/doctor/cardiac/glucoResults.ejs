@@ -1,0 +1,34 @@
+<%- include('../../shared/includes/head', { pageTitle: 'glucoResults' }) %>
+<link rel="stylesheet" href="/styles/patient.css">
+<link rel="stylesheet" href="/styles/base.css">
+<link rel="stylesheet" href="/styles/forms.css">
+<script src="/scripts/patient-management.js" defer></script>
+
+</head>
+<body>
+  <%- include('../../shared/includes/header') %>
+
+  <main>
+    <p id="patients-grid"> </p>
+    <section>
+  
+    <p id="patients-grid">
+      <h1 style="text-align: center;">GlucoCheck Results</h1>
+      <p >
+        <a href="/dr/glucoCheckApp" style="text-align: center;" class="btn">Backe To GlucoCheck Page</a>
+      </p>
+   
+      <ul id="patients-grid">
+        <% for (const glucoCheck of glucoChecks) { %>
+          <li>
+            <%- include('includes/glucoCheck-item', {glucoCheck: glucoCheck})  %> 
+            
+          </li>
+        <% } %>
+      </ul>
+     
+      
+   
+  </section>
+  </main>
+<%- include('../../shared/includes/footer') %>

@@ -1,0 +1,23 @@
+<%- include('../../shared/includes/head', { pageTitle: 'All Patients' }) %>
+<link rel="stylesheet" href="/styles/patient.css">
+<link rel="stylesheet" href="/styles/base.css">
+<script src="/scripts/patient-management.js" defer></script>
+
+</head>
+<body>
+  <%- include('../../shared/includes/header') %>
+  <main>
+    <h1>All Patients</h1>
+    
+    <section>
+      <ul id="patients-grid">
+        <% for (const patient of patients) { %>
+          <li>
+           <%- include('../../shared/includes/patient-item', { patient: patient }) %>
+            
+          </li>
+        <% } %>
+      </ul>
+    </section>
+  </main>
+<%- include('../../shared/includes/footer') %>

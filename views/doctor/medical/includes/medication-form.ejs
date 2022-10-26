@@ -1,0 +1,69 @@
+<form action="/dr/all-medications" method="POST">  
+  <input type="hidden" name="_csrf" value="<%= locals.csrfToken %>">
+
+  
+    <p>
+      <label for="medication">Medication</label>
+      <input type="text" id="medication" name="medication" required>
+    </p>
+
+   <p>
+    <label for="patient">Select Patient</label>
+    <select id="patient_id" name="patient_id">
+      <% for (const patient of patients) { %> 
+        <option value="<%= patient.id%>"><%= patient.pTfullname %></option>
+      <% } %> 
+    </select>
+   </p>
+
+    <p>
+      <label for="route">Route</label>
+      <select  id="route" name="route" 
+      required>
+      <option value="oral">ORAL</option>
+      <option value="sc">SC</option>
+      <option value="im">IM</option>
+      <option value="iv">IV</option>
+      <option value="inh">INH</option>
+      <option value="rectal">RECTAL</option>
+      <option value="topical">TOPICAL</option>
+      <option value="sublingual">SUBLINGUAL</option>
+      <option value="transdermal ">TRANSDERMAL </option>
+    </select>
+    </p>
+    
+   
+
+    <p>
+      <label for="dose">Dose</label>
+      <input type="text" id="dose" name="dose"  required>
+    </p>
+    <p>
+      <label for="time">Time</label>
+      <input type="text" id="time" name="time"   required>
+    </p>
+
+    <p>
+      <label for="startDate">Start Date</label>
+      <input type="date" id="startDate" name="startDate" 
+       required>
+    </p>
+
+    <p>
+      <label for="endDate">End Date</label>
+      <input type="date" id="endDate" name="endDate" 
+      required >
+    </p>
+
+    <p>
+      <label for="note">Note</label>
+      <textarea id="note" name="note" rows="7" required></textarea>
+    </p>
+
+  
+<p>
+  <button type="reset" class="btn btn-alt">Reset</button>
+  <button class="btn">ADD</button>
+</p>
+</form>
+

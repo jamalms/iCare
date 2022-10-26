@@ -1,0 +1,29 @@
+<%- include('../../shared/includes/head', { pageTitle: 'update-healthHistory' }) %>
+<link rel="stylesheet" href="/styles/forms.css">
+<script src="/scripts/image-preview.js" defer></script>
+
+</head>
+<body>
+  <%- include('../../shared/includes/header') %>
+
+<main>
+  <form action="/dr/medicalProfile/<%= medicalProfile.id%>/editHelthH" method="POST">  
+    <input type="hidden" name="_csrf" value="<%= locals.csrfToken %>">
+  
+    
+    <p>
+      <label for="healthHistory">Medical History</label>
+      <textarea id="healthHistory" name="healthHistory" rows="7"> <%= medicalProfile.healthHistory %> </textarea>
+    </p>
+  
+
+  <p>
+    <button type="reset" class="btn btn-alt">Reset</button>
+    <button class="btn">Save</button>
+  </p>
+</form>
+  
+</main>
+
+<%- include('../../shared/includes/footer') %>
+

@@ -1,0 +1,89 @@
+#patients-grid {
+    margin: var(--space-8) auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+    gap: var(--space-4);
+  }
+  
+  .patient-item {
+    border-radius: var(--border-radius-medium);
+    text-align: center;
+    background-color: var(--color-gray-600);
+    overflow: hidden;
+  }
+  
+  .patient-item img {
+    width: 100%;
+    height: 15rem;
+    object-fit: cover;
+  }
+  
+  .patient-item-content {
+    padding: var(--space-4);
+  }
+  
+  .patient-item-content h2 {
+    font-size: 1.15rem;
+    margin: var(--space-2) 0;
+  }
+  
+  .patient-item-actions {
+    display: flex;
+    gap: var(--space-2);
+    margin-top: var(--space-4);
+    justify-content: center;
+  }
+
+  #patient-details header {
+    margin-top: var(--space-8);
+    padding: var(--space-8);
+    background-color: var(--color-gray-600);
+    gap: var(--space-8);
+  }
+  
+  #patient-details img {
+    width: 100%;
+    height: 6rem;
+    object-fit: cover;
+    border-radius: var(--border-radius-medium);
+    border: 1px solid var(--color-gray-100);
+  }
+  
+  #patient-info {
+    text-align: center;
+  }
+  
+  #patient-description {
+    background-color: var(--color-primary-500-bg);
+    padding: var(--space-8);
+    white-space: pre-wrap;
+  }
+  
+  @media (min-width: 48rem) {
+    #patient-details header {
+      display: flex;
+    }
+  
+    #patient-details img {
+      width: 20rem;
+      height: 20rem;
+     
+      margin: var(--space-8);
+    }
+  
+    #patient-info {
+      text-align: left;
+    }
+  }
+
+  .patient-action{
+    display: inline;
+    margin: 20px;
+    padding: 20px;
+  }
+
+ .medical-action{
+   margin-top: 20px;
+   
+   
+ }

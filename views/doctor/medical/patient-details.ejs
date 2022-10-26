@@ -1,0 +1,36 @@
+<%- include('../../shared/includes/head', { pageTitle: patient.id }) %>
+<link rel="stylesheet" href="/styles/patient.css">
+<script src="/scripts/patient-management.js" defer></script>
+
+</head>
+<body>
+  <%- include('../../shared/includes/header') %>
+  
+  <main id="patient-details">
+    <div class="medical-action">
+       
+        
+       
+    </div>
+      <header> 
+          
+          
+          <div id="patient-info">
+            <h1>Name: <%= patient.pTfullname %> </h1>
+            <p>Patient ID: <%= patient.id %></p>
+            <p>Birth Date: <%= patient.pTbirthDate %></p>
+            <p>Gender: <%= patient.pTgender %></p>
+            <p>Registration Date: <%= patient.humanReadableDate %></p>
+            <p>Phone: <%= patient.pTphone %></p>
+            <p>Address: <%= patient.pTaddress %></p>
+
+             
+             </div>
+             
+             
+    </header>
+  
+   
+   
+  </main>
+<%- include('../../shared/includes/footer') %>

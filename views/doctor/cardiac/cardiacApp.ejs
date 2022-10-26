@@ -1,0 +1,165 @@
+<%- include('../../shared/includes/head', { pageTitle: 'cardiacApp' }) %>
+<link rel="stylesheet" href="/styles/patient.css">
+<link rel="stylesheet" href="/styles/base.css">
+<link rel="stylesheet" href="/styles/forms.css">
+<script src="/scripts/patient-management.js" defer></script>
+
+</head>
+<body>
+  <%- include('../../shared/includes/header') %>
+  <main>
+    <p id="patients-grid">
+      <section>
+        <p id="patients-grid"></p>
+        <p id="patients-grid"></p>
+      </section>
+      <section>
+       <a href="/dr/cardiacPatients" style="text-align: center;" class="btn">All Results</a>
+        <h1 style="text-align: center;">Cardiac Department</h1>
+      </section>
+    </p>
+   
+    <section>
+      
+     <p id="patients-grid">
+      
+      
+     
+      <form action="/dr/cardiacPatients" method="post">
+       
+        <input type="hidden" name="_csrf" value="<%= locals.csrfToken %>">
+
+        <p>
+          <label for="patient">Select Patient</label>
+          <select id="dpatient_id" name="patient_id">
+            <% for (const patient of patients) { %> 
+              <option value="<%= patient.id%>"><%= patient.pTfullname %></option>
+            <% } %> 
+          </select>
+         </p>
+       
+      
+        
+        
+      <button id="btn" class="btn" type="button" onclick=" checkRate(), onClick()">Cardiac Screening</button>
+   
+        
+       
+      <h1 style="font-weight: bold;" id="FINISH"></h1>
+      <h1 style="font-weight: bold;" id="demo"></h1>
+     
+     </p>
+
+     <p>
+      <label for="results">Report</label>
+      <textarea id="results" name="results" rows="7" placeholder="Copy the results here" required></textarea>
+    </p>
+
+     <p>
+      <button type="reset" class="btn btn-alt">Reset</button>
+      <button class="btn" >Save</button>
+    </p>
+     
+    </form>
+  
+    </section>
+   
+  </main>
+
+
+  <script>
+    var button = document.getElementById("btn");
+
+function onClick() {
+  console.log("Clicked");
+  button.removeAttribute("onClick");
+}
+  </script>
+  <script>
+    function checkRate(){
+  const x = Math.floor(Math.random() * (250 - 30 ) ) + 30;
+  let message;
+  let hR;
+  
+  if (x >= 99 && x <= 119) {
+   
+    message =  " Tachycardia, needs further assessment";
+    bloodPressure();
+  } else if (x >= 120 && x <= 149) {
+   
+    message =  " Heigh, needs medical staff for intervention";
+    bloodPressure();
+  } else if (x >= 150 && x <= 179) {
+   
+    message =  " Heigh, needs medical staff for intervention";
+    bloodPressure1();
+  } else if (x >= 180 && x <= 250) {
+   
+    message =  " Heigh, needs medical staff for intervention";
+    bloodPressure2();
+  } else if (x <= 39) {
+   
+    message =  " Low, needs medical staff for intervention";
+    bloodPressure3();
+  }  else if (x <= 59 && x >= 40) {
+    hR = "The heart rate is:"
+    message =  " Bradycardia, needs further assessment";
+    bloodPressure(); 
+  } else {
+    hR = "The heart rate is:"
+    message =  " Normal";
+    bloodPressure4();
+  }
+  document.getElementById("FINISH").innerHTML = "The heart rate is:  " + x + "<br>" + message; 
+  
+  }
+  </script>
+  <script>
+    function bloodPressure(){
+  const systolic = Math.floor(Math.random() * (140 - 40 ) ) + 40;
+  const diastolic = Math.floor(Math.random() * (90 - 30 ) ) + 30;
+  
+  
+  document.getElementById("demo").innerHTML=" Blodd Pressure:  " +systolic+ "/" +diastolic;
+  //window.alert("Blodd Pressure: " +systolic+ "/" +diastolic+ "," +result);
+  }
+  </script>
+  
+  <script>
+    function bloodPressure1(){
+  const systolic = Math.floor(Math.random() * (190- 50 ) ) + 50;
+  const diastolic = Math.floor(Math.random() * (45 - 35 ) ) + 35;
+  
+  
+  document.getElementById("demo").innerHTML=" Blodd Pressure:  " +systolic+ "/" +diastolic;
+  }
+  </script>
+  <script>
+    function bloodPressure2(){
+  const systolic = Math.floor(Math.random() * (210 - 70 ) ) + 70;
+  const diastolic = Math.floor(Math.random() * (90 - 40 ) ) + 40;
+  
+  
+  document.getElementById("demo").innerHTML=" Blodd Pressure:  " +systolic+ "/" +diastolic;
+  }
+  </script>
+  <script>
+    function bloodPressure3(){
+  const systolic = Math.floor(Math.random() * (90 - 45 ) ) + 45;
+  const diastolic = Math.floor(Math.random() * (44 - 20 ) ) + 20;
+  
+  
+  document.getElementById("demo").innerHTML=" Blodd Pressure:  " +systolic+ "/" +diastolic;
+  }
+  </script>
+  <script>
+    function bloodPressure4(){
+  const systolic = Math.floor(Math.random() * (140 - 90 ) ) + 90;
+  const diastolic = Math.floor(Math.random() * (80 - 60 ) ) + 60;
+  
+  
+  document.getElementById("demo").innerHTML=" Blodd Pressure:  " +systolic+ "/" +diastolic;
+  }
+  </script>
+  
+<%- include('../../shared/includes/footer') %>

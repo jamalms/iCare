@@ -1,0 +1,30 @@
+<article class="patient-item">
+
+  <div class="patient-item-content" style="text-align: left;">
+    <h2 style="text-align: center;"> <%= respiratoryReading.patient_name %></h2> 
+    
+    <p> Patient Number:</br> <%= respiratoryReading.patient_id %></p>
+    <p> Rsults:</br> <%= respiratoryReading.results %></p>
+    <p> Time:</br> <%= respiratoryReading.timeTaken %></p>
+    
+  
+   
+   
+   
+    <div class="patient-item-actions">
+      <a class="btn btn-alt" href="/dr/update-ventelationResult/<%= respiratoryReading.id%>/edit">Edit</a>
+      <form action="/dr/ventilatedPatients/<%= respiratoryReading.id %>/delete" method="POST">
+        <button class="btn btn-alt">Delete</button>
+        <input type="hidden" name="_csrf" value="<%= locals.csrfToken %>">
+      </form>
+     
+      
+      
+    </div>
+      
+     
+      
+      
+    </div>
+  </div>
+</article>

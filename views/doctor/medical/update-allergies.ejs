@@ -1,0 +1,30 @@
+<%- include('../../shared/includes/head', { pageTitle: 'update allergies' }) %>
+<link rel="stylesheet" href="/styles/forms.css">
+<script src="/scripts/image-preview.js" defer></script>
+
+</head>
+<body>
+  <%- include('../../shared/includes/header') %>
+
+<main>
+  
+    <form action="/dr/medicalProfile/<%= medicalProfile.id%>/editAg" method="POST">  
+    <input type="hidden" name="_csrf" value="<%= locals.csrfToken %>">
+  
+    
+    <p>
+      <label for="allergies">Allergies</label>
+      <textarea id="allergies" name="allergies" rows="7"> <%= medicalProfile.allergies %> </textarea>
+    </p>
+  
+
+  <p>
+    <button type="reset" class="btn btn-alt">Reset</button>
+    <button class="btn">Save</button>
+  </p>
+</form>
+  
+</main>
+
+<%- include('../../shared/includes/footer') %>
+

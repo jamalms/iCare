@@ -1,0 +1,32 @@
+<%- include('../../shared/includes/head', { pageTitle: 'cardiacPatients' }) %>
+<link rel="stylesheet" href="/styles/patient.css">
+<link rel="stylesheet" href="/styles/base.css">
+<script src="/scripts/patient-management.js" defer></script>
+
+</head>
+<body>
+  <%- include('../../shared/includes/header') %>
+  <main>
+    <h1>Cardiac Patients</h1>
+    <section>
+      
+      <p id="patients-grid">
+        <a href="/dr/cardiacApp" style="text-align: center;" class="btn">Backe To Cardiac Page</a>
+        
+      </p>
+    </section>
+    <section>
+      
+      <ul id="patients-grid">
+        <% for (const cardiacReading of cardiacReadings) { %>
+          <li>
+            <%- include('includes/cardiacPatient-item', {cardiacReading: cardiacReading})  %> 
+            
+          </li>
+        <% } %>
+      </ul>
+        
+     
+    </section>
+  </main>
+<%- include('../../shared/includes/footer') %>

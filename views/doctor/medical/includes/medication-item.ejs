@@ -1,0 +1,24 @@
+<article class="patient-item">
+
+  <div class="patient-item-content" style="text-align: left;">
+    <h2 style="text-align: center;"> <%= medication.medication %></h2>  
+    <p> Patien: <%= medication.pTfullname %></p>
+    <p> Start Date: <%= medication.startDate %></p>
+    <p> End Treatment: <%= medication.endDate %></p>
+    <p> Route Administration: <%= medication.route %></p>
+    <p> Dose: <%= medication.dose %></p>
+    <p> Time: <%= medication.time %></p>
+    <p> Notes: <%= medication.note %></p>
+   
+    <div class="patient-item-actions">
+      <a class="btn btn-alt" href="/dr/medication/<%= medication.id %>/edit">Edit</a>
+      <form action="/dr/medications/<%= medication.id %>/delete" method="POST">
+        <button class="btn btn-alt">Delete</button>
+        <input type="hidden" name="_csrf" value="<%= locals.csrfToken %>">
+      </form>
+     
+      
+      
+    </div>
+  </div>
+</article>

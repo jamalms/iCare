@@ -1,0 +1,81 @@
+<%- include('../../shared/includes/head', { pageTitle: 'Update Medication' }) %>
+<link rel="stylesheet" href="/styles/forms.css">
+<script src="/scripts/image-preview.js" defer></script>
+
+</head>
+<body>
+  <%- include('../../shared/includes/header') %>
+
+<main>
+  <form action="/dr/medications/<%= medication.id%>/edit" method="POST">  
+    <input type="hidden" name="_csrf" value="<%= locals.csrfToken %>">
+  
+    
+      <p>
+        <label for="medication">Medication</label>
+        <input type="text" id="medication" name="medication" value="<%= medication.medication %> " required>
+      </p>
+  
+    
+  
+      <p>
+        <label for="route">Route</label>
+        <select  id="route" name="route" 
+        value="<%= medication.route %> " required>
+        <option value="oral">ORAL</option>
+        <option value="sc">SC</option>
+        <option value="im">IM</option>
+        <option value="iv">IV</option>
+        <option value="inh">INH</option>
+        <option value="rectal">RECTAL</option>
+        <option value="topical">TOPICAL</option>
+        <option value="sublingual">SUBLINGUAL</option>
+        <option value="transdermal ">TRANSDERMAL </option>
+      </select>
+      </p>
+      
+     
+  
+      <p>
+        <label for="dose">Dose</label>
+        <input type="text" id="dose" name="dose" value="<%= medication.dose %> "  required>
+      </p>
+      <p>
+        <label for="time">Time</label>
+        <input type="text" id="time" name="time" value="<%= medication.time %> "  required>
+      </p>
+  
+     
+      <p>
+        <label for="startDate">Start Date</label>
+        <input type="date" id="startDate" name="startDate"  value="<%= medication.startDate  %>"
+         required>
+      </p>
+
+      <p>
+        <label for="endDate">End Date</label>
+        <input type="date" id="endDate" name="endDate"  value="<%= medication.endDate  %>"
+         >
+      </p>
+    
+  
+  
+  
+      <p>
+        <label for="note">Note</label>
+        <textarea id="note" name="note" rows="7"> <%= medication.note %> 
+      </textarea>
+      </p>
+  
+    
+  <p>
+    <button type="reset" class="btn btn-alt">Reset</button>
+    <button class="btn">ADD</button>
+  </p>
+  </form>
+  
+  
+</main>
+
+<%- include('../../shared/includes/footer') %>
+

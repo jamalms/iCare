@@ -1,0 +1,65 @@
+
+
+<%- include('../../shared/includes/head', { pageTitle: 'Add Medical Profile' }) %>
+<link rel="stylesheet" href="/styles/forms.css">
+
+<script src="/scripts/image-preview.js" defer></script>
+
+</head>
+<body>
+  <%- include('../../shared/includes/header') %>
+
+<main>
+  <form action="/dr/medicalprofile" method="POST" enctype="multipart">
+  
+    <input type="hidden" name="_csrf" value="<%= locals.csrfToken %>">
+         
+    <p>
+      <label for="patient">Select Patient</label>
+      <select id="dpatient_id" name="patient_id">
+        <% for (const patient of patients) { %> 
+          <option value="<%= patient.id%>"><%= patient.pTfullname %></option>
+        <% } %> 
+      </select>
+     </p>
+     
+     
+     
+     <p>
+      <label for="mainComplain">Main Complaint</label>
+      <textarea id="mainComplain" name="mainComplain" rows="7" required></textarea>
+    </p>
+      <p>
+        <label for="healthHistory">Health History</label>
+        <textarea id="healthHistory" name="healthHistory" rows="7" required></textarea>
+      </p>
+      <p>
+        <label for="diagnosis">Diagnosis</label>
+        <textarea id="diagnosis" name="diagnosis" rows="7" required></textarea>
+      </p>
+      <p>
+        <label for="medications">Medications</label>
+        <textarea id="medications" name="medications" rows="7" required></textarea>
+      </p>
+      <p>
+        <label for="allergies">Allergies</label>
+        <textarea id="allergies" name="allergies" rows="7" required></textarea>
+      </p>
+      <div id="image-upload-control">
+       
+          <label for="file"></label>
+          <input type="file" id="image" name="image" >
+          <img src="" alt="Selected image.">
+        </div>
+    
+     
+    
+  <p>
+    <button type="reset" class="btn btn-alt">Reset</button>
+    <button class="btn">Save</button>
+  </p>
+  </form>
+</main>
+
+<%- include('../../shared/includes/footer') %>
+

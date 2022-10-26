@@ -1,0 +1,19 @@
+<article class="patient-item">
+    
+    <div class="patient-item-content">
+      <h2><%= treatment.patient_name %></h2>
+      <div class="patient-item-actions">
+        <% if (locals.isAdmin) { %> 
+        <a class="btn btn-alt" href=>View </a>
+        <a class="btn btn-alt" href=>Edit</a>
+        <form action="" method="">
+        <button class="btn btn-alt">Delete Patient</button>
+        <input type="hidden" name="_csrf" value="<%= locals.csrfToken %>">
+      </form>
+        <% } else { %> 
+          <a class="btn btn-alt" href=""> View Details</a>
+          <% } %> 
+      </div>
+    </div>
+  </article>  
+  

@@ -1,0 +1,49 @@
+<%- include('../../shared/includes/head', { pageTitle: 'All Patients' }) %>
+<link rel="stylesheet" href="/styles/patient.css">
+<script src="/scripts/patient-management.js" defer></script>
+
+</head>
+<body>
+  <%- include('../../shared/includes/header') %>
+  
+  <main id="patient-details">
+  
+      <header> 
+          
+          
+          <div id="patient-info">
+              <h1>Name: <%= patient.pTfullname %> </h1>
+              <p>Patient ID: <%= patient.id %></p>
+              <p>Birth Date: <%= patient.pTbirthDate %></p>
+              <p>Gender: <%= patient.pTgender %></p>
+              <p>Registration Date: <%= patient.humanReadableDate %></p>
+              <p>Phone: <%= patient.pTphone %></p>
+              <p>Address: <%= patient.pTaddress %></p>
+
+             
+             </div>
+             
+             
+    </header>
+  
+    
+    <div class="medical-action">
+      <div class="patient-item-content">
+        
+        <div class="patient-item-actions">
+          <% if (locals.isAdmin) { %> 
+          <a class="btn btn-alt" href="/admin/patients/<%= patient.id %>/edit">Edit</a>
+          <form action="/admin/patients/<%= patient.id %>/delete" method="POST">
+          <button class="btn btn-alt">Delete Patient</button>
+          <input type="hidden" name="_csrf" value="<%= locals.csrfToken %>">
+        </form>
+          <% } else { %> 
+            <a class="btn btn-alt" href="/patients-list/<%= patient.id %>"> View Details</a>
+            <% } %> 
+        </div>
+      </div>
+       
+    </div>
+   
+  </main>
+<%- include('../../shared/includes/footer') %>

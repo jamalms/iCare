@@ -1,0 +1,29 @@
+
+
+<%- include('../../shared/includes/head', { pageTitle: 'All Report' }) %>
+<link rel="stylesheet" href="/styles/patient.css">
+<script src="/scripts/image-preview.js" defer></script>
+
+</head>
+<body>
+  <%- include('../../shared/includes/header') %>
+   
+
+<main>
+  <h1 style="text-align: center;">All Reports</h1>
+    <a class="btn" href="/dr/add-reports">Add New Reports</a>
+
+    <section> 
+    <ul id="patients-grid">
+      <% for (const report of reports) { %>
+        <li>
+          <%- include('includes/report-item', {report: report})  %> 
+          
+        </li>
+      <% } %>
+    </ul>
+  </section>
+</main>
+
+<%- include('../../shared/includes/footer') %>
+

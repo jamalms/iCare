@@ -1,0 +1,31 @@
+
+
+<%- include('../../shared/includes/head', { pageTitle: 'Medical Profile' }) %> 
+
+<link rel="stylesheet" href="/styles/patient.css">
+
+
+</head>
+<body>
+  <%- include('../../shared/includes/header') %>
+
+<main>
+  <h1 style="text-align: center;">All Medical Profiles</h1>
+  <a class="btn" href="/dr/add-medicalProfile">Add New Profile</a>
+
+
+  <section> 
+    <ul id="patients-grid">
+      <% for (const medicalProfile of medicalProfiles) { %>
+        <li>
+          <%- include('includes/medicalProfile-item', {medicalProfile: medicalProfile})  %> 
+          
+        </li>
+      <% } %>
+    </ul>
+  </section>
+
+</main>
+
+<%- include('../../shared/includes/footer') %>
+

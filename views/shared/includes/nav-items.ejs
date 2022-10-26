@@ -1,0 +1,72 @@
+<ul class="nav-items">
+    <% if (!locals.isAdmin && !locals.isDoctor) { %> 
+    
+    
+    <% } %>
+
+    
+    <% if (locals.isAuth && !locals.isAdmin && !locals.isDoctor) { %> 
+      
+      <% } %> 
+      <% if (locals.isAdmin) { %> 
+        <li><a href="/admin/patients">Patients</a></li>
+        <li><a href="/admin/add-patient">Add Patient</a></li>
+      
+     
+      <% } %>
+
+      <% if (locals.isDoctor) { %> 
+       
+        <div class="dropdown">
+          <button class="dropbtn">Patients 
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-content">
+            <a href="/dr/patients-list">All Patients</a>
+            <a href="/dr/medicalprofile">Medical Profiles</a>
+            <a href="/dr/add-medicalProfile">Add New Patient</a>
+            
+          </div>
+        </div> 
+        
+          <div class="dropdown">
+            <button class="dropbtn">Medical Managments 
+              <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+              <a href="/dr/all-medications" >Medications</a>
+              <a href="/dr/all-reports">Reports</a>
+              <a href="/dr/add-medicalProfile">Open New Profile</a>
+              
+            </div>
+          </div> 
+
+    
+          <div class="dropdown">
+            <button class="dropbtn">Medical Remote
+              <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+              <a href="/dr/cardiacApp">Cardiac</a>
+              <a href="/dr/glucoCheckApp">GlucoCheck</a>
+              <a href="/dr/ventilationApp">Ventilation</a>
+              
+            </div>
+          </div> 
+        
+      <% } %>
+
+      <% if (!locals.isAuth) { %> 
+        <li><a href="/signup">Signup</a></li>
+        <li><a href="/login">Login</a></li>
+      <% } %>
+
+    <% if (locals.isAuth) { %>
+      <li>
+        <form action="/logout" method="POST">
+          <input type="hidden" name="_csrf" value="<%= locals.csrfToken %>">
+          <button>Logout</button>
+        </form>
+      </li>
+    <% } %>
+  </ul>

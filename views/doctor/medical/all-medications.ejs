@@ -1,0 +1,34 @@
+
+
+<%- include('../../shared/includes/head', { pageTitle: 'All Medication' }) %>
+
+
+<link rel="stylesheet" href="/styles/patient.css">
+<script src="/scripts/patient-management.js" defer></script>
+
+</head>
+
+<body>
+  <%- include('../../shared/includes/header') %>
+  
+  <main>
+   
+    <h1 style="text-align: center;">All Medications</h1>
+    <a class="btn" href="/dr/medication/">Add New Medication</a>
+  
+    <section>
+      <ul id="patients-grid">
+        <% for (const medication of medications) { %>
+          <li>
+            <%- include('includes/medication-item', {medication: medication})  %> 
+            
+          </li>
+        <% } %>
+      </ul>
+    </section>
+    
+    
+    
+   
+  </main>
+<%- include('../../shared/includes/footer') %>

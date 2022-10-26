@@ -1,0 +1,125 @@
+<%- include('../../shared/includes/head', { pageTitle: 'glucoCheckApp' }) %>
+<link rel="stylesheet" href="/styles/patient.css">
+<link rel="stylesheet" href="/styles/base.css">
+<link rel="stylesheet" href="/styles/forms.css">
+<script src="/scripts/patient-management.js" defer></script>
+
+</head>
+
+<body>
+  <%- include('../../shared/includes/header') %>
+ 
+  <main>
+    <p id="patients-grid">
+      
+    </p>
+   
+    <section>
+     <p id="patients-grid">
+      <h1 style="text-align: center;">GlucoCheck & Insulin Pump</h1>
+      <p >
+        <a href="/dr/glucoResults" style="text-align: center;" class="btn">All Results</a>
+      </p>
+      
+     
+      <form action="/dr/glucoResults" method="post">
+       
+        <input type="hidden" name="_csrf" value="<%= locals.csrfToken %>">
+
+        <p>
+          <label for="patient">Select Patient</label>
+          <select id="dpatient_id" name="patient_id">
+            <% for (const patient of patients) { %> 
+              <option value="<%= patient.id%>"><%= patient.pTfullname %></option>
+            <% } %> 
+          </select>
+         </p>
+     
+      <button id="btn" class="btn" value="Calculate" type="button" onclick="pumpInsulin(), onClick()">GlucoCheck</button>
+      
+      <h1 style="font-weight: bold;" id="FINISH1"></h1>
+    
+    
+
+    <p>
+      <label for="results">Report</label>
+      <textarea id="results" name="results" rows="7" placeholder="Copy the results here" required></textarea>
+    </p>
+
+     <p>
+      <button type="reset" class="btn btn-alt">Reset</button>
+      <button class="btn" >Save</button>
+      
+    </p>
+   
+
+  </form>
+  
+    </section>
+   
+  </main>
+  
+ 
+  
+  
+  
+  
+  <script>
+    function pumpInsulin(){
+  const x = Math.floor(Math.random() * (499 - 20 ) ) + 20;
+  let message;
+  let gllevell;
+  
+  if (x === 70 ) {
+    
+    message =  " Pump 3 Units of Insulin";
+  } else if (x >= 71 && x <= 100) {
+   
+    message =  "  Pump 4 Units of Insulin";
+  } else if (x >= 101 && x <= 150) {
+    
+    message =  "  Pump 6 Units of Insulin";
+  } else if (x >= 151 && x <= 200) {
+    
+    message =  " Pump 8 Units of Insulin";
+  } else if (x >= 201 && x <= 250) {
+    
+    message =  "  Pump 10 Units of Insulin";
+  }  else if (x >= 251 && x <= 300) {
+    
+    message =  " Pump 12 Units of Insulin";
+  } else if (x >= 301 && x <= 350) {
+    
+    message =  "  Pump 14 Units of Insulin";
+  } else if (x >= 350 && x <= 499) {
+    
+    message =  "  Alert Severe Hyperglycemia, Patient needs medical staff for intervention, Pump 16 Units of Insulin";
+  } else if (x <= 69 && x >= 59) {
+    
+    message =  "  Hypoglycemia, Sopt pumping insulin"; 
+  } else {
+    
+     message =  "  Alert Severe Hypoglycemia, Patien needs medical staff for intervention, stop pumping insulin";
+  }
+  document.getElementById("FINISH1").innerHTML = " The glucose level is: " + x + " mg/dL"+  "</br>" + message; 
+  }
+  </script>
+  
+  
+  
+  
+  
+  <script>
+    var button = document.getElementById("btn");
+
+function onClick() {
+  console.log("Clicked");
+  button.removeAttribute("onClick");
+}
+  </script>
+  
+
+ 
+  
+  
+<%- include('../../shared/includes/footer') %>

@@ -1,0 +1,66 @@
+<%- include('../../shared/includes/head', { pageTitle: medicalProfile.id }) %>
+<link rel="stylesheet" href="/styles/patient.css">
+<script src="/scripts/patient-management.js" defer></script>
+
+</head>
+<body>
+  <%- include('../../shared/includes/header') %>
+  
+  <main id="patient-details">
+   
+    <h1 style="text-align: center;">Patient  Profile <%= medicalProfile.pTfullname %></h1> 
+    
+      <header> 
+        
+          
+          <div id="patient-info">
+        
+            
+            
+
+            <p><h2  style="text-align: center;">Chief Complaint</h2> <%= medicalProfile.mainComplain %></p>
+            <p style="text-align: right;">
+              <a class="btn btn-alt" href="/dr/update-mainComplain/<%= medicalProfile.id %>/editMainC"> Update</a> 
+              
+           </p>
+           <hr>
+            <p><h2 style="text-align: center;">Medical History</h2> <%= medicalProfile.healthHistory %></p>
+            <p style="text-align: right;">
+              <a class="btn btn-alt" href="/dr/update-healthHistory/<%= medicalProfile.id %>/editHelthH"> Update</a> 
+             
+           </p>
+           <hr>
+           <p><h2 style="text-align: center;">Diagnosis</h2>  <%= medicalProfile.diagnosis %></p>
+           <p style="text-align: right;">
+           <a class="btn btn-alt" href="/dr/update-diagnosis/<%= medicalProfile.id %>/edit"> Update</a> 
+           
+        </p>
+        <hr>
+           <p><h2 style="text-align: center;">Medications</h2>  <%= medicalProfile.medications %></p>
+           <p style="text-align: right;">
+           
+           <a class="btn btn-alt" href="/dr/update-meds/<%= medicalProfile.id %>/editMeds"> Update</a>  
+           
+        </p>
+        <hr>
+            <p> <h2 style="text-align: center;">Allergies</h2> <%= medicalProfile.allergies %></p>
+            <p style="text-align: right;">
+              <a class="btn btn-alt" href="/dr/update-allergies/<%= medicalProfile.id %>/editAg"> Update</a> 
+              
+           </p>
+           <hr>
+        
+            <p> uploadFile: <%= medicalProfile.uploadFile %></p>
+           
+            
+
+             
+             </div>
+             
+             
+    </header>
+  
+   
+   
+  </main>
+<%- include('../../shared/includes/footer') %>

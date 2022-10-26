@@ -1,0 +1,33 @@
+<%- include('../../shared/includes/head', { pageTitle: 'All Patients' }) %>
+<link rel="stylesheet" href="/styles/patient.css">
+<script src="/scripts/patient-management.js" defer></script>
+
+</head>
+<body>
+  <%- include('../../shared/includes/header') %>
+  <main>
+    <h1>Patient Administration</h1>
+    <section>
+      <h2>Manage Patient</h2>
+      <p>
+        <a href="/admin/add-patient" class="btn">Add Patient</a>
+      </p>
+    </section>
+    <section>
+      <ul id="patients-grid">
+       
+         
+            <%- include('includes/patient-form', { submitPath: '/admin/patients'  patient: {
+                pTfullname: '',
+                pTbirthDate: '',
+                pTgender: '',
+                pTphone: '',
+                pTaddress: '',
+                image: '',
+              }  }) %>
+            
+         
+       
+      
+  </main>
+<%- include('../../shared/includes/footer') %>

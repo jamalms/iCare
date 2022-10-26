@@ -1,0 +1,34 @@
+<%- include('../../shared/includes/head', { pageTitle: 'Treatment' }) %>
+<link rel="stylesheet" href="/styles/patient.css">
+<script src="/scripts/patient-management.js" defer></script>
+
+</head>
+<body>
+  <%- include('../../shared/includes/header') %>
+  <main>
+    <h1>Patient Administration</h1>
+    <section>
+      <h2>Manage Patient</h2>
+      <p>
+        <a href="/dr/all-medications" class="btn">Medications</a>
+        <a href="/dr/all-diagnosis" class="btn">Diagnosis</a>
+        <a href="/dr/all-allergies" class="btn">Allergies</a>
+        <a href="/dr/all-reports" class="btn">Reports</a>
+        <a href="/dr/all-diagnosis" class="btn">TREATMENT</a>
+      </p>
+    </section>
+    <section>
+      <ul id="patients-grid">
+        <% for (const treatment of treatments) { %>
+          <li>
+           <%- include('../../shared/includes/treatment-item', { treatment: treatment }) %>
+            
+          </li>
+        <% } %>
+      </ul>
+    </section>
+    <section>
+      
+    </section>
+  </main>
+<%- include('../../shared/includes/footer') %>

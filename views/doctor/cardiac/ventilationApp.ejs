@@ -1,0 +1,117 @@
+<%- include('../../shared/includes/head', { pageTitle: 'ventilationApp' }) %>
+<link rel="stylesheet" href="/styles/patient.css">
+<link rel="stylesheet" href="/styles/base.css">
+<link rel="stylesheet" href="/styles/forms.css">
+<script src="/scripts/patient-management.js" defer></script>
+
+</head>
+
+<body>
+  <%- include('../../shared/includes/header') %>
+ 
+  <main>
+    <p id="patients-grid">
+      <section>
+        <p id="patients-grid"></p>
+        <p id="patients-grid"></p>
+      </section>
+      <section>
+        <a href="/dr/ventilatedPatients" style="text-align: center;" class="btn">All Results</a>
+       <h1 style="text-align: center;">Mechanical Ventilation Department</h1>
+      </section>
+    </p>
+  
+    <section>
+     <p id="patients-grid">
+      
+      <form action="/dr/ventilatedPatients" method="post">
+       
+        <input type="hidden" name="_csrf" value="<%= locals.csrfToken %>">
+
+        <p>
+          <label for="patient">Select Patient</label>
+          <select id="dpatient_id" name="patient_id">
+            <% for (const patient of patients) { %> 
+              <option value="<%= patient.id%>"><%= patient.pTfullname %></option>
+            <% } %> 
+          </select>
+         </p>
+     
+      <button id="btn" class="btn" type="button" onclick=" checkOsaturation(), onClick()">Ventelation Assessment</button>
+    
+    
+    <h1 style="font-weight: bold;" id="FINISH"></h1>
+    <h1 style="font-weight: bold;" id="demo"></h1>
+
+    <p>
+      <label for="results">Report</label>
+      <textarea id="results" name="results" rows="7" placeholder="Copy the results here" required></textarea>
+    </p>
+
+     <p>
+      <button type="reset" class="btn btn-alt">Reset</button>
+      <button class="btn" >Save</button>
+      
+    </p>
+   
+
+  </form>
+  
+    </section>
+   
+  </main>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script>
+    function checkOsaturation(){
+  const x = Math.floor(Math.random() * (100 - 60 ) ) + 60;
+  let message;
+  let action;
+  
+  if (x <= 100 && x >= 95) {
+    message =  " Normal oxygen saturation levels (SpO2)";
+    action = " No need further actions";
+  } else if (x <= 94 && x >= 90) {
+    message =  " Oxygen saturation levels below Normal range";
+    action = " Take thses actions:" +"<br>" +  " - Request Suction (Airway Clearance)"; 
+  } else if (x <= 89 && x >= 80) {
+    message =  " Oxygen saturation levels below Normal range";
+    action = " Take thses actions:" +"<br>" +  " - Request Suction (Airway Clearance)" +"<br>" + " - Start Nebulizer " +"<br>" + " - Increase Oxygen Flow Rate"; 
+  } else if (x <= 79 && x >= 70) {
+    message =  " Hypoxemia";
+    action = " Take thses actions:" +"<br>" +  " - Increase Oxygen Flow Rate" +"<br>" +" - Request Suction (Airway Clearance)" +"<br>" +" - Start Nebulizer ";  
+  } else  {
+    message =  " Emergency Hypoxemia";
+    action = " Take thses actions:" +"<br>" +  " - Increase Oxygen Flow Rate" +"<br>" +" - Start Suction (Airway Clearance)" +"<br>" +" - Start Nebulizer " +"<br>"+" - Switch Ventilation Mode to Automode"; 
+  } 
+  document.getElementById("FINISH").innerHTML = x + message + "<br>" +action; 
+  
+  }
+  </script>
+  
+  </script>
+  </body>
+  </html>
+  
+
+  <script>
+    var button = document.getElementById("btn");
+
+function onClick() {
+  console.log("Clicked");
+  button.removeAttribute("onClick");
+}
+  </script>
+  
+  
+<%- include('../../shared/includes/footer') %>

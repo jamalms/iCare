@@ -1,0 +1,35 @@
+<%- include('../../shared/includes/head', { pageTitle: 'ventilatedPatients' }) %>
+<link rel="stylesheet" href="/styles/patient.css">
+<link rel="stylesheet" href="/styles/base.css">
+<link rel="stylesheet" href="/styles/forms.css">
+<script src="/scripts/patient-management.js" defer></script>
+
+</head>
+<body>
+  <%- include('../../shared/includes/header') %>
+
+  <main>
+    <p id="patients-grid"> </p>
+    <section>
+  
+    <p id="patients-grid">
+      <h1 style="text-align: center;">Ventelated Patients</h1>
+      <p >
+        <a href="/dr/ventilationApp" style="text-align: center;" class="btn">Backe To Ventelation Page</a>
+      </p>
+   
+      
+     
+        <ul id="patients-grid">
+          <% for (const respiratoryReading of respiratoryReadings) { %>
+            <li>
+              <%- include('includes/ventilatedPatients-item', {respiratoryReading: respiratoryReading})  %> 
+              
+            </li>
+          <% } %>
+        </ul>
+      
+   
+  </section>
+  </main>
+<%- include('../../shared/includes/footer') %>

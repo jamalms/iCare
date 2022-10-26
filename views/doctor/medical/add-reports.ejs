@@ -1,0 +1,40 @@
+
+
+<%- include('../../shared/includes/head', { pageTitle: 'Add Report' }) %>
+<link rel="stylesheet" href="/styles/forms.css">
+<script src="/scripts/image-preview.js" defer></script>
+
+</head>
+<body>
+  <%- include('../../shared/includes/header') %>
+
+<main>
+<form action="/dr/all-reports" method="POST">
+  
+  <input type="hidden" name="_csrf" value="<%= locals.csrfToken %>">
+       
+  <p>
+    <label for="patient">Select Patient</label>
+    <select id="dpatient_id" name="patient_id">
+      <% for (const patient of patients) { %> 
+        <option value="<%= patient.id%>"><%= patient.pTfullname %></option>
+      <% } %> 
+    </select>
+   </p>
+ 
+    <p>
+      <label for="report">report</label>
+      <textarea id="report" name="report" rows="7" required></textarea>
+    </p>
+  
+   
+  
+<p>
+  <button type="reset" class="btn btn-alt">Reset</button>
+  <button class="btn">Save</button>
+</p>
+</form>
+</main>
+
+<%- include('../../shared/includes/footer') %>
+
